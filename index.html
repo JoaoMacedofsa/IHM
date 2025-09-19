@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora de Gastos Mensais</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Calculadora de Gastos Mensais</h1>
+        <nav>
+            <button id="to-dashboard" class="link like">Resumo</button>
+            <button id="to-planner" class="primary">Planejar</button>
+        </nav>
+    </header>
+
+    <main id="screens">
+        <!-- Tela 1: Resumo/Dashboard -->
+        <section id="screen-dashboard" class="screen active" aria-labelledby="title-dashboard">
+            <h2 id="title-dashboard">Resumo do Mês</h2>
+            <div class="cards">
+                <article class="card">
+                    <h3>Total de Receitas</h3>
+                    <p id="income-total" class="value positive">R$ 0,00</p>
+                </article>
+                <article class="card">
+                    <h3>Total de Despesas</h3>
+                    <p id="expense-total" class="value negative">R$ 0,00</p>
+                </article>
+                <article class="card">
+                    <h3>Saldo</h3>
+                    <p id="balance" class="value">R$ 0,00</p>
+                </article>
+            </div>
+
+            <div class="filters">
+                <label for="month-select">Mês:</label>
+                <select id="month-select" aria-label="Selecionar mês">
+                    <!-- preenchido via JS -->
+                </select>
+
+                <label class="checkbox">
+                    <input type="checkbox" id="hide-empty" checked>
+                    <span>Ocultar categorias vazias</span>
+                </label>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="summary-table" aria-describedby="title-dashboard">
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Receitas</th>
+                            <th>Despesas</th>
+                            <th>Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summary-body">
+                        <!-- linhas via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Tela 2: Planejamento/Entrada de dados -->
+        <section id="screen-planner" class="screen" aria-labelledby="title-planner" hidden>
+            <h2 id="title-planner">Planejamento e Lançamentos</h2>
+
+            <form id="entry-form" autocomplete="off">
+                <div class="row">
+                    <label for="type">Tipo</label>
+                    <select id="type" required>
+                        <option value="income">Receita</option>
+                        <option value="expense">Despesa</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <label for="category">Categoria</label>
+                    <input id="category" type="text" placeholder="Ex.: Aluguel, Mercado" required>
+                </div>
+                <div class="row">
+                    <label for="amount">Valor</label>
+                    <input id="amount" type="number" step="0.01" min="0" placeholder="0,00" required>
+                </div>
+                <div class="row">
+                    <label for="date">Data</label>
+                    <input id="date" type="date" required>
+                </div>
+                <div class="row">
+                    <label class="checkbox">
+                        <input type="checkbox" id="fixed" />
+                        <span>Despesa/Receita recorrente</span>
+                    </label>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="primary">Adicionar</button>
+                    <button type="button" id="clear-all" class="danger">Limpar Tudo</button>
+                </div>
+            </form>
+
+            <div class="table-wrapper">
+                <table class="entries-table">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Categoria</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th>Recorrente</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="entries-body">
+                        <!-- linhas via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <small>Dados armazenados localmente no navegador.</small>
+    </footer>
+
+    <script src="./app.js"></script>
+</body>
+</html>
+
+

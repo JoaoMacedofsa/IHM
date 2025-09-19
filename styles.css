@@ -1,0 +1,105 @@
+:root {
+  /* Palette: 3F0D12, A71D31, F1F0CC, D5BF86, 8D775F */
+  --bg: #F1F0CC;          /* Lemon chiffon */
+  --panel: #D5BF86;       /* Ecru */
+  --muted: #8D775F;       /* Chamolsee */
+  --text: #3F0D12;        /* Black bean */
+  --primary: #A71D31;     /* Madder */
+  --primary-600: #8f192b; /* Darker Madder */
+  --danger: #A71D31;      /* Use red as danger */
+  --positive: #8D775F;    /* Olive-ish as positive highlight */
+  --negative: #A71D31;    /* Red as negative */
+  --border: #8D775F;      /* Use olive for borders */
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-header, .app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: #3F0D12; /* sólido, sem gradiente */
+  color: #F1F0CC; /* texto mais claro */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.app-footer {
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+  position: static;
+  margin-top: 24px;
+  justify-content: center;
+}
+
+/* Texto/links mais claros no header/footer */
+.app-header h1, .app-footer, .app-footer small { color: #F1F0CC; }
+.app-header .link { color: #F1F0CC; opacity: 0.85; }
+.app-header .link:hover { opacity: 1; }
+
+h1 { font-size: 18px; margin: 0; }
+h2 { font-size: 16px; margin: 8px 0 16px; }
+h3 { font-size: 14px; margin: 0 0 8px; color: var(--muted); font-weight: 600; }
+
+nav button { margin-left: 8px; }
+
+button, select, input[type="text"], input[type="number"], input[type="date"] {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+button { cursor: pointer; }
+button.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+button.primary:hover { background: var(--primary-600); }
+button.danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+button.link { background: transparent; border: 1px solid transparent; color: var(--muted); }
+button.like:hover { color: var(--text); }
+
+main { padding: 16px 20px; max-width: 1100px; margin: 0 auto; }
+
+.screen { display: none; }
+.screen.active { display: block; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
+.value { font-size: 22px; font-weight: 700; }
+.value.positive { color: var(--positive); }
+.value.negative { color: var(--negative); }
+
+.filters { display: flex; gap: 10px; align-items: center; margin: 16px 0; flex-wrap: wrap; }
+.checkbox { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+
+.table-wrapper { overflow: auto; border-radius: 12px; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; background: #fff7e6; }
+th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; font-size: 14px; color: var(--text); }
+thead th { position: sticky; top: 0; background: #D5BF86; color: var(--text); }
+
+form#entry-form { background: #f3e9cf; border: 1px solid var(--border); padding: 12px; border-radius: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+form#entry-form .row { display: flex; flex-direction: column; gap: 6px; }
+form#entry-form .actions { grid-column: 1 / -1; display: flex; gap: 8px; }
+
+.entries-table .action {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 10px; border-radius: 8px; font-size: 12px;
+  border: 1px solid var(--border); background: var(--panel);
+}
+.entries-table .action:hover { filter: brightness(1.1); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* Single light theme using provided palette */
+
+
